@@ -3,18 +3,24 @@ name: Lint Agent Files
 on:
   pull_request:
     paths:
+      - 'academic/**'
       - 'design/**'
       - 'engineering/**'
+      - 'finance/**'
       - 'game-development/**'
+      - 'hr/**'
+      - 'legal/**'
       - 'marketing/**'
       - 'paid-media/**'
-      - 'sales/**'
       - 'product/**'
       - 'project-management/**'
-      - 'testing/**'
-      - 'support/**'
+      - 'sales/**'
       - 'spatial-computing/**'
       - 'specialized/**'
+      - 'strategy/**'
+      - 'supply-chain/**'
+      - 'support/**'
+      - 'testing/**'
 
 jobs:
   lint:
@@ -29,9 +35,11 @@ jobs:
         id: changed
         run: |
           FILES=$(git diff --name-only --diff-filter=ACMR origin/${{ github.base_ref }}...HEAD -- \
-            'design/**/*.md' 'engineering/**/*.md' 'game-development/**/*.md' 'marketing/**/*.md' 'paid-media/**/*.md' 'sales/**/*.md' 'product/**/*.md' \
-            'project-management/**/*.md' 'testing/**/*.md' 'support/**/*.md' \
-            'spatial-computing/**/*.md' 'specialized/**/*.md')
+            'academic/**/*.md' 'design/**/*.md' 'engineering/**/*.md' 'finance/**/*.md' \
+            'game-development/**/*.md' 'hr/**/*.md' 'legal/**/*.md' 'marketing/**/*.md' \
+            'paid-media/**/*.md' 'product/**/*.md' 'project-management/**/*.md' 'sales/**/*.md' \
+            'spatial-computing/**/*.md' 'specialized/**/*.md' 'strategy/**/*.md' \
+            'supply-chain/**/*.md' 'support/**/*.md' 'testing/**/*.md')
           {
             echo "files<<ENDOFLIST"
             echo "$FILES"
